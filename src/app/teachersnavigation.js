@@ -83,7 +83,7 @@
 //     },
 //   ]
 
-export const navigations = () => [
+export const navigations = [
   {
     name: "Dashboard",
     path: "/teacher/dashboard",

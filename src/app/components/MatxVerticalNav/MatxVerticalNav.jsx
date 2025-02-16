@@ -78,6 +78,11 @@ const MatxVerticalNav = ({ items }) => {
   const { mode } = settings.layout1Settings.leftSidebar;
 
   const renderLevels = (data) => {
+    if (!Array.isArray(data)) {
+      console.error("MatxVerticalNav Error: data is not an array", data);
+      return null; // Prevents crash
+    }
+
     return data.map((item, index) => {
       if (item.type === "label")
         return (

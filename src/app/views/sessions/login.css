@@ -1,0 +1,19 @@
+.logos {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: fff;
+  max-width: 500px;
+  margin: auto !important;
+  margin-bottom: 150px;
+}
+
+@media (max-width: 600px) {
+  .logos {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: fff;
+    max-width: 100% !important;
+    margin: auto;
+    margin-top: 0px !important;
+  }
+}

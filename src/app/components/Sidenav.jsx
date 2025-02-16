@@ -4,7 +4,7 @@ import useSettings from "../../app/hooks/useSettings";
 
 import { navigations as adminNavigation } from "../../app/adminnavigation"; // Create an admin navigation file
 import { navigations as studentNavigation } from "../../app/studentnavigation"; // Create a student navigation file
-import { navigations as teacherNavigation } from "../../app/teachersnavigation"; // Create a teacher navigation file
+import { navigations as teachersNavigation } from "../../app/teachersnavigation"; // Create a teacher navigation file
 import useAuth from "../../app/hooks/useAuth";
 import { Fragment } from "react";
 import Scrollbar from "react-perfect-scrollbar";
@@ -47,30 +47,34 @@ const Sidenav = ({ children }) => {
   };
 
   const { user } = useAuth(); // Assuming user role is accessible via useAuth hook
-
+  console.log("User:", user);
+  console.log("User Role:", user?.role);
   let navigation = [];
 
-  switch (user.role) {
+  switch (
+    user?.role // Ensure user is defined
+  ) {
     case "admin":
-      navigation = adminNavigation;
+      navigation = adminNavigation || [];
       break;
     case "student":
-      navigation = studentNavigation;
+      navigation = studentNavigation || [];
       break;
     case "teacher":
-      navigation = teacherNavigation;
+      navigation = teachersNavigation || [];
       break;
     default:
-      // Default navigation for unknown roles
-      navigation = adminNavigation;
+      navigation = adminNavigation || [];
   }
+
+  console.log("Final Navigation Data:", navigation);
 
   return (
     <Fragment>
       <StyledScrollBar options={{ suppressScrollX: true }}>
         {children}
 
-        <MatxVerticalNav items={navigation} />
+        <MatxVerticalNav items={navigation || []} />
       </StyledScrollBar>
 
       <SideNavMobile onClick={() => updateSidebarMode({ mode: "close" })} />

@@ -48,7 +48,7 @@ const ContentBox = styled("div")(({ theme }) => ({
 const ViewAdmin = () => {
   const { currentSession } = useContext(SessionContext);
   const { data, loading, error, reFetch } = useFetch(
-    currentSession ? `/get-session-admin/${currentSession._id}` : null
+    currentSession ? `/get-session-admin` : null
   );
   const { palette } = useTheme();
   const [editAdminData, setEditAdminData] = useState(null);

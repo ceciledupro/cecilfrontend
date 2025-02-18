@@ -94,18 +94,42 @@ const ViewAdmin = () => {
     setDeleteConfirmationOpen(false);
   };
 
+  // const handleDeleteUser = async () => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `${apiUrl}/api/session/${currentSession._id}/users/${userToDelete._id}`
+  //     );
+
+  //     console.log("Response from delete API:", response.data);
+
+  //     if (response.status === 200) {
+  //       console.log("User deleted successfully");
+
+  //       reFetch();
+  //     } else {
+  //       console.error("Failed to delete User");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting User:", error);
+  //   }
+  // };
+
   const handleDeleteUser = async () => {
     try {
       const response = await axios.delete(
-        `${apiUrl}/api/session/${currentSession._id}/users/${userToDelete._id}`
+        `${apiUrl}/api/admin/${userToDelete._id}`, // Directly using admin ID
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Adding JWT token for authentication
+          },
+        }
       );
 
       console.log("Response from delete API:", response.data);
 
       if (response.status === 200) {
         console.log("User deleted successfully");
-
-        reFetch();
+        reFetch(); // Trigger refetch of data
       } else {
         console.error("Failed to delete User");
       }
@@ -113,6 +137,7 @@ const ViewAdmin = () => {
       console.error("Error deleting User:", error);
     }
   };
+
   const updateTableData = (newSubject) => {
     setTableData([...data, newSubject]);
     reFetch();

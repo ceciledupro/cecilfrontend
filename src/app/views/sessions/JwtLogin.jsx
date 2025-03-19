@@ -107,6 +107,8 @@ const JwtLogin = () => {
       navigate("/teacher/dashboard");
     } else if (userRole === "student") {
       navigate("/student/dashboard/default");
+    } else if (userRole === "parent") {
+      navigate("/parent/dashboard");
     } else {
       navigate("/session/signin"); // Redirect unauthenticated users to sign-in page
     }

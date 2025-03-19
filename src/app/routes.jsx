@@ -9,6 +9,7 @@ import MatxLayout from "./components/MatxLayout/MatxLayout";
 import teacherDashboardRoutes from "./views/teacherdashboard/teacherDashboardRoutes";
 import studentDashboardRoutes from "./views/studentdashboard/studentDashboardRoutes";
 import adminDashboardRoutes from "./views/admindashboard/adminDashboardRoutes";
+import parentDashboardRoutes from "./views/parentdashboard/parentDashboardRoutes";
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
       ...adminDashboardRoutes,
       ...teacherDashboardRoutes,
       ...studentDashboardRoutes,
+      ...parentDashboardRoutes,
     ],
   },
   ...sessionRoutes,

@@ -63,7 +63,8 @@ const AuthGuard = ({ children }) => {
       user &&
       (user.role === "student" ||
         user.role === "teacher" ||
-        user.role === "admin")
+        user.role === "admin" ||
+        user.role === "parent")
     ) {
       return true;
     }

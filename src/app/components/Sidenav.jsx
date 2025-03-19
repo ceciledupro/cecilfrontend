@@ -5,6 +5,7 @@ import useSettings from "../../app/hooks/useSettings";
 import { navigations as adminNavigation } from "../../app/adminnavigation"; // Create an admin navigation file
 import { navigations as studentNavigation } from "../../app/studentnavigation"; // Create a student navigation file
 import { navigations as teachersNavigation } from "../../app/teachersnavigation"; // Create a teacher navigation file
+import { navigations as parentsNavigation } from "../../app/parentnavigation"; // Create a teacher navigation file
 import useAuth from "../../app/hooks/useAuth";
 import { Fragment } from "react";
 import Scrollbar from "react-perfect-scrollbar";
@@ -62,6 +63,9 @@ const Sidenav = ({ children }) => {
       break;
     case "teacher":
       navigation = teachersNavigation || [];
+      break;
+    case "parent":
+      navigation = parentsNavigation || [];
       break;
     default:
       navigation = adminNavigation || [];

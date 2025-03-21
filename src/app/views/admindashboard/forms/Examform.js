@@ -93,8 +93,12 @@ export default function Examform() {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title"> Add Exam</DialogTitle>
-
         <DialogContent>
+          ( Note: Use Capital Letter to create EXAM: e.g FIRST TERM, SECOND
+          TERM, THIRD TERM)
+          <br></br>
+          <br></br>
+          <br></br>
           <label>Exam Name</label>
           <TextField
             autoFocus
@@ -107,7 +111,6 @@ export default function Examform() {
             fullWidth
           />
           <label>Exam Date</label>
-
           <TextField
             autoFocus
             margin="dense"

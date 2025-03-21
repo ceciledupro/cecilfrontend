@@ -239,46 +239,58 @@ const Analytics = () => {
         ))}
       </div>
 
-      <div className="container-fluid">
+      <div className="container-fluid p-4">
+        <div className="text-center mb-4">
+          <h2 className="text-primary fw-bold" style={{ fontSize: "2rem" }}>
+            My Kids
+          </h2>
+        </div>
+
         <div className="row d-flex flex-wrap justify-content-center">
-          {children.map((child) => (
-            <div
-              key={child._id}
-              className="col-md-5 m-3 p-3 border rounded shadow"
-            >
-              <h4 className="text-primary text-center">{child.studentName}</h4>
-              <div className="profile-personal-info">
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Username:</div>
-                  <div className="col-7">{child.username}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Email:</div>
-                  <div className="col-7">{child.email}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Phone:</div>
-                  <div className="col-7">{child.phone}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Class:</div>
-                  <div className="col-7">{child.classname}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Admission No:</div>
-                  <div className="col-7">{child.AdmNo}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Address:</div>
-                  <div className="col-7">{child.address}</div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-5 font-weight-bold">Parent's Name:</div>
-                  <div className="col-7">{child.parentsName}</div>
+          {children.length > 0 ? (
+            children.map((child) => (
+              <div
+                key={child._id}
+                className="col-md-6 col-lg-5 m-3 p-4 border rounded shadow bg-light"
+              >
+                <h4 className="text-primary text-center">
+                  {child.studentName}
+                </h4>
+                <div className="profile-personal-info">
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Username:</div>
+                    <div className="col-7">{child.username}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Email:</div>
+                    <div className="col-7">{child.email}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Phone:</div>
+                    <div className="col-7">{child.phone}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Class:</div>
+                    <div className="col-7">{child.classname}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Admission No:</div>
+                    <div className="col-7">{child.AdmNo}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Address:</div>
+                    <div className="col-7">{child.address}</div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col-5 fw-bold">Parent's Name:</div>
+                    <div className="col-7">{child.parentsName}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center text-muted">No children found.</p>
+          )}
         </div>
       </div>
       <div className="row gutters-20" style={{ marginTop: "60px" }}></div>

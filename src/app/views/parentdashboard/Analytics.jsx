@@ -86,7 +86,18 @@ const Analytics = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { currentSession } = useContext(SessionContext);
+  const [children, setChildren] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/api/parent/children`)
+      .then((response) => {
+        setChildren(response.data.children);
+      })
+      .catch((error) => {
+        console.error("Error fetching children:", error);
+      });
+  }, []);
   const { logout, user } = useAuth();
 
   const handleChangePage = (_, newPage) => {
@@ -121,10 +132,10 @@ const Analytics = () => {
   }, [apiUrl, currentSession]);
   // Fetch user counts
   const [userCounts, setUserCounts] = useState({
-    Subjects: 0,
-    Teachers: 0,
-    CourseMate: 0,
-    admins: 0,
+    DueFees: 0,
+    TotalPaid: 0,
+    Children: 0,
+    Notification: 0,
   });
   const [studentCount, setStudentCount] = useState(0);
   // get all users in a class
@@ -226,6 +237,49 @@ const Analytics = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="container-fluid">
+        <div className="row d-flex flex-wrap justify-content-center">
+          {children.map((child) => (
+            <div
+              key={child._id}
+              className="col-md-5 m-3 p-3 border rounded shadow"
+            >
+              <h4 className="text-primary text-center">{child.studentName}</h4>
+              <div className="profile-personal-info">
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Username:</div>
+                  <div className="col-7">{child.username}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Email:</div>
+                  <div className="col-7">{child.email}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Phone:</div>
+                  <div className="col-7">{child.phone}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Class:</div>
+                  <div className="col-7">{child.classname}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Admission No:</div>
+                  <div className="col-7">{child.AdmNo}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Address:</div>
+                  <div className="col-7">{child.address}</div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-5 font-weight-bold">Parent's Name:</div>
+                  <div className="col-7">{child.parentsName}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="row gutters-20" style={{ marginTop: "60px" }}></div>
       <div className="cald">

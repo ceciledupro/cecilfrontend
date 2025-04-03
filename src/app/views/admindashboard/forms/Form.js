@@ -401,7 +401,6 @@ const initialValues = {
   parentsName: "",
   phone: "",
   AdmNo: "",
-  date: "",
   username: "",
   email: "",
   password: "",
@@ -431,8 +430,6 @@ const Form = () => {
   const { currentSession } = useContext(SessionContext);
   const [classData, setClassData] = useState([]);
 
-  const navigate = useNavigate();
-  const [state, setState] = useState({ date: new Date() });
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // useEffect(() => {
